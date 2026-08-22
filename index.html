@@ -1,0 +1,636 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Kedai Cemal Cemil</title>
+
+  <meta name="theme-color" content="#6f3028">
+  <meta name="description" content="Cemilan, dimsum, dessert & drinks yang bikin nagih ❤️">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+    :root {
+      --cream: #f8efe2;
+      --cream-light: #fffaf2;
+      --cream-dark: #eadbc7;
+      --brown: #4b2d25;
+      --brown-light: #755348;
+      --maroon: #6f3028;
+      --gold: #b98b55;
+      --white: #fffdf9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--cream);
+      color: var(--brown);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Subtle checker pattern */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(45deg, #eadbc7 25%, transparent 25%),
+        linear-gradient(-45deg, #eadbc7 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #eadbc7 75%),
+        linear-gradient(-45deg, transparent 75%, #eadbc7 75%);
+      background-size: 36px 36px;
+      background-position: 0 0, 0 18px, 18px -18px, -18px 0;
+    }
+
+    /* Top decorative line */
+    .top-pattern {
+      height: 7px;
+      width: 100%;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          var(--maroon) 0,
+          var(--maroon) 18px,
+          var(--cream-light) 18px,
+          var(--cream-light) 36px
+        );
+    }
+
+    .page {
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 28px 18px 34px;
+    }
+
+    /* ================= PROFILE ================= */
+
+    .profile {
+      text-align: center;
+      margin-bottom: 25px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .logo-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 13px;
+    }
+
+    .logo {
+      width: 102px;
+      height: 102px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--cream-light);
+      outline: 2px solid var(--maroon);
+      box-shadow: 0 8px 22px rgba(75, 45, 37, 0.18);
+      background: var(--cream-light);
+    }
+
+    .logo-decoration {
+      position: absolute;
+      right: -8px;
+      bottom: 2px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--maroon);
+      color: var(--cream-light);
+      font-size: 14px;
+      border: 3px solid var(--cream);
+    }
+
+    .profile h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      line-height: 1.2;
+      color: var(--brown);
+      margin-bottom: 7px;
+    }
+
+    .profile-description {
+      max-width: 310px;
+      margin: auto;
+      color: var(--brown-light);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .mini-decoration {
+      margin-top: 12px;
+      color: var(--maroon);
+      font-size: 14px;
+      letter-spacing: 7px;
+    }
+
+    /* ================= LINKS ================= */
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .link {
+      position: relative;
+      width: 100%;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 48px 14px 52px;
+
+      border-radius: 17px;
+      text-decoration: none;
+
+      background: var(--brown);
+      color: var(--cream-light);
+
+      font-size: 14px;
+      font-weight: 600;
+
+      box-shadow:
+        0 5px 0 rgba(75, 45, 37, 0.10),
+        0 9px 20px rgba(75, 45, 37, 0.10);
+
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .link:nth-child(2) {
+      animation-delay: 0.05s;
+    }
+
+    .link:nth-child(3) {
+      animation-delay: 0.1s;
+    }
+
+    .link:nth-child(4) {
+      animation-delay: 0.15s;
+    }
+
+    .link:nth-child(5) {
+      animation-delay: 0.2s;
+    }
+
+    .link:active {
+      transform: scale(0.97);
+      box-shadow: 0 3px 8px rgba(75, 45, 37, 0.12);
+    }
+
+    .link:hover {
+      background: #58372f;
+    }
+
+    .icon {
+      position: absolute;
+      left: 17px;
+      width: 27px;
+      height: 27px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 9px;
+      background: rgba(255,255,255,0.12);
+      font-size: 15px;
+    }
+
+    .arrow {
+      position: absolute;
+      right: 17px;
+      font-size: 17px;
+      opacity: 0.65;
+    }
+
+    /* Pricelist special */
+    .link.primary {
+      background: var(--maroon);
+      min-height: 64px;
+      font-size: 15px;
+      box-shadow:
+        0 5px 0 rgba(111, 48, 40, 0.12),
+        0 10px 24px rgba(111, 48, 40, 0.20);
+    }
+
+    .link.primary .icon {
+      background: rgba(255,255,255,0.16);
+    }
+
+    .link.primary::after {
+      content: "MENU";
+      position: absolute;
+      top: -8px;
+      right: 16px;
+
+      padding: 4px 9px;
+      border-radius: 20px;
+
+      background: var(--gold);
+      color: var(--white);
+
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* ================= INFO ================= */
+
+    .info-card {
+      margin-top: 25px;
+      padding: 19px 16px;
+
+      background: rgba(255, 250, 242, 0.88);
+      border: 1px solid rgba(117, 83, 72, 0.14);
+      border-radius: 20px;
+
+      text-align: center;
+
+      box-shadow: 0 7px 22px rgba(75, 45, 37, 0.07);
+
+      animation: fadeUp 0.8s ease both;
+      animation-delay: 0.25s;
+    }
+
+    .open-title {
+      display: inline-block;
+      margin-bottom: 8px;
+
+      color: var(--maroon);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .hours {
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
+      color: var(--brown);
+      margin-bottom: 7px;
+    }
+
+    .address {
+      color: var(--brown-light);
+      font-size: 11.5px;
+      line-height: 1.55;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      margin-top: 22px;
+      text-align: center;
+      color: var(--brown-light);
+      font-size: 10.5px;
+      opacity: 0.75;
+    }
+
+    footer span {
+      color: var(--maroon);
+    }
+
+    /* ================= MENU MODAL ================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+
+      padding: 20px 12px;
+
+      background: rgba(55, 32, 27, 0.78);
+      backdrop-filter: blur(6px);
+
+      overflow-y: auto;
+    }
+
+    .modal.active {
+      display: flex;
+      animation: modalFade 0.25s ease;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      padding-bottom: 25px;
+    }
+
+    .modal-header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 8px 2px 14px;
+    }
+
+    .modal-title {
+      color: var(--white);
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+    }
+
+    .close {
+      width: 40px;
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: none;
+      border-radius: 50%;
+
+      background: var(--cream-light);
+      color: var(--brown);
+
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .menu-image {
+      width: 100%;
+      height: auto;
+      display: block;
+
+      margin-bottom: 14px;
+
+      border-radius: 14px;
+      background: var(--cream-light);
+
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    /* ================= ANIMATION ================= */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes modalFade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Prevent desktop from becoming too wide */
+    @media (min-width: 600px) {
+      body {
+        padding-bottom: 20px;
+      }
+
+      .page {
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-pattern"></div>
+
+  <main class="page">
+
+    <!-- PROFILE -->
+    <section class="profile">
+
+      <div class="logo-wrapper">
+        <!-- Ganti logo.jpg dengan foto/logo kedai -->
+        <img
+          src="logo.jpg"
+          alt="Kedai Cemal Cemil"
+          class="logo"
+        >
+
+        <div class="logo-decoration">福</div>
+      </div>
+
+      <h1>Kedai Cemal Cemil</h1>
+
+      <p class="profile-description">
+        Cemilan, dimsum, dessert & drinks<br>
+        yang bikin nagih ❤️
+      </p>
+
+      <div class="mini-decoration">✦ ✦ ✦</div>
+
+    </section>
+
+
+    <!-- LINKS -->
+    <section class="links">
+
+      <!-- MENU -->
+      <a href="#" class="link primary" onclick="openMenu(event)">
+        <span class="icon">🍽️</span>
+        <span>Pricelist / Menu</span>
+        <span class="arrow">›</span>
+      </a>
+
+      <!-- SHOPEE -->
+      <a
+        href="https://spf.shopee.co.id/50YNvLdOC0"
+        target="_blank"
+        rel="noopener"
+        class="link"
+      >
+        <span class="icon">🛍️</span>
+        <span>Pesan di ShopeeFood</span>
+        <span class="arrow">›</span>
+      </a>
+
+      <!-- MAPS -->
+      <a
+        href="https://maps.app.goo.gl/aWhVPLa4AafE9gH46?g_st=ic"
+        target="_blank"
+        rel="noopener"
+        class="link"
+      >
+        <span class="icon">📍</span>
+        <span>Kunjungi Toko</span>
+        <span class="arrow">›</span>
+      </a>
+
+      <!-- WHATSAPP -->
+      <a
+        href="https://wa.me/62895365349042"
+        target="_blank"
+        rel="noopener"
+        class="link"
+      >
+        <span class="icon">💬</span>
+        <span>Hubungi Kami</span>
+        <span class="arrow">›</span>
+      </a>
+
+      <!-- INSTAGRAM -->
+      <a
+        href="https://www.instagram.com/kedaicemalcemil_78/"
+        target="_blank"
+        rel="noopener"
+        class="link"
+      >
+        <span class="icon">📸</span>
+        <span>Instagram</span>
+        <span class="arrow">›</span>
+      </a>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+    <section class="info-card">
+
+      <div class="open-title">
+        OPEN EVERY DAY
+      </div>
+
+      <div class="hours">
+        15.00 – 22.00 WIB
+      </div>
+
+      <div class="address">
+        Jl. Kampus Ngireng-ireng Panggungharjo,<br>
+        Sewon, Bantul
+      </div>
+
+    </section>
+
+
+    <footer>
+      Made with <span>♥</span> by Kedai Cemal Cemil
+    </footer>
+
+  </main>
+
+
+  <!-- MENU MODAL -->
+  <div
+    id="menuModal"
+    class="modal"
+    onclick="closeMenuOutside(event)"
+  >
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <div class="modal-title">
+          Pricelist Menu
+        </div>
+
+        <button
+          class="close"
+          onclick="closeMenu()"
+          aria-label="Tutup menu"
+        >
+          ×
+        </button>
+      </div>
+
+      <!-- Ganti dengan gambar menu kamu -->
+      <img
+        src="menu1.jpeg"
+        alt="Pricelist Kedai Cemal Cemil"
+        class="menu-image"
+      >
+
+      <img
+        src="menu2.jpeg"
+        alt="Pricelist Kedai Cemal Cemil"
+        class="menu-image"
+      >
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function openMenu(event) {
+      event.preventDefault();
+
+      const modal = document.getElementById("menuModal");
+
+      modal.classList.add("active");
+
+      document.body.style.overflow = "hidden";
+    }
+
+
+    function closeMenu() {
+      const modal = document.getElementById("menuModal");
+
+      modal.classList.remove("active");
+
+      document.body.style.overflow = "";
+    }
+
+
+    function closeMenuOutside(event) {
+      if (event.target.id === "menuModal") {
+        closeMenu();
+      }
+    }
+
+
+    // Tutup popup dengan tombol Escape
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+  </script>
+
+</body>
+</html>
+```
